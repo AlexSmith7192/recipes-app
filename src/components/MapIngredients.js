@@ -27,18 +27,17 @@ export default function MapIngredients(props) {
   }, [dataToManipulate]);
 
   return (
-    <div>
-      <ul>
-        {recipeIngredients.map(({ name, quantity }, ingredientIndex) => (
-          <li
-            data-testid={ `${ingredientIndex}-ingredient-name-and-measure` }
-            key={ ingredientIndex }
-          >
-            {`- ${name} - ${quantity}`}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="ingredients-list">
+      {recipeIngredients.map(({ name, quantity }, ingredientIndex) => (
+        <li
+          className="ingredients-list__item"
+          data-testid={ `${ingredientIndex}-ingredient-name-and-measure` }
+          key={ ingredientIndex }
+        >
+          {`${name} - ${quantity}`}
+        </li>
+      ))}
+    </ul>
   );
 }
 

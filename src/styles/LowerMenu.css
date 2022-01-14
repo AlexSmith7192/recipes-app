@@ -1,14 +1,11 @@
-* {
-  box-sizing: border-box;
-}
-
 section {
   margin-bottom: 70px;
 }
 
 .lower-menu {
-  background-color: mediumpurple;
+  background-color: #FFD700;
   bottom: 0;
+  left: 0;
   display: flex;
   justify-content: space-evenly;
   padding: 6px 0;

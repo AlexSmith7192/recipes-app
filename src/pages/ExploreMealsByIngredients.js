@@ -9,11 +9,13 @@ import '../styles/IngredientsCard.css';
 
 export default function ExploreMealsByIngredients({ history }) {
   const [ingredients, setIngredients] = useState([]);
-  const { setFoodArray } = useContext(GlobalContext);
+  const { setFoodArray, loading, setLoading } = useContext(GlobalContext);
 
   const getIngredients = async () => {
+    setLoading(true);
     const ingredientsData = await fetchIngredientsFromMealsDB();
     setIngredients(ingredientsData);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -21,8 +23,10 @@ export default function ExploreMealsByIngredients({ history }) {
   }, []);
 
   const filterByIngredient = async (ingredient) => {
+    setLoading(true);
     const filteredMeals = await fetchMealsByIngredient(ingredient);
     setFoodArray(filteredMeals);
+    setLoading(false);
   };
 
   const handleClick = (name) => {
@@ -31,13 +35,11 @@ export default function ExploreMealsByIngredients({ history }) {
   };
 
   return (
-    <div>
+    <>
       <Header title="Explorar Ingredientes" renderButton />
       <div className="ingredients">
         {
-          // Para visualizar a animação do spinner, adicionar
-          // .length ao ingredients
-          ingredients ? ingredients.map((ing, index) => {
+          !loading && ingredients ? ingredients.map((ing, index) => {
             const ingredientsObject = { name: ing.strIngredient, index, api: 'meals' };
             return (
               <IngredientsCard
@@ -51,7 +53,7 @@ export default function ExploreMealsByIngredients({ history }) {
         }
       </div>
       <LowerMenu />
-    </div>
+    </>
   );
 }
 
