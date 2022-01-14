@@ -22,7 +22,10 @@
     "react-scripts": "3.4.1",
     "websocket-extensions": ">=0.1.4"
   },
+  "homepage": "https://alexsmith7192.github.io/recipes-app",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -69,10 +72,5 @@
       "text",
       "clover"
     ]
-  },
-  "homepage": "https:\/\/AlexSmith7192.github.io/recipes-app",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
   }
 }
